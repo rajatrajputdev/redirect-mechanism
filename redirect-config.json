@@ -1,0 +1,12 @@
+{
+  "url": "https://example.com",
+  "delay": 5,
+  "title": "Redirecting to Example",
+  "subtitle": "Taking you to your destination in a moment...",
+  "logo": "🌐",
+  "showDestination": true,
+  "theme": {
+    "background": "linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%)",
+    "accentColor": "#00ff95"
+  }
+}

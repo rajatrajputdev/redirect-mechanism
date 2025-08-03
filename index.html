@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0a0a0a 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e0e0e0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 149, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 149, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00f5ff, #0099ff);
+            border-radius: 3px;
+            width: 0%;
+            animation: progress var(--duration, 5s) linear forwards;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+        }
+
+        @keyframes progress {
+            to { width: 100%; }
+        }
+
+        .countdown {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .destination {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            word-break: break-all;
+            margin-bottom: 1.5rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles"></div>
+    
+    <div class="container">
+        <div class="logo" id="logo">🚀</div>
+        <h1 id="title">Redirecting...</h1>
+        <p class="subtitle" id="subtitle">Please wait while we take you to your destination</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="countdown" id="countdown">5</div>
+        <div class="destination" id="destination">Loading...</div>
+        
+        <div class="actions">
+            <a href="#" class="btn btn-primary" id="redirectBtn">
+                <span>Go Now</span>
+                <span>→</span>
+            </a>
+            <button class="btn btn-secondary" onclick="cancelRedirect()">
+                <span>Cancel</span>
+                <span>✕</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Alternative: Load config from external JSON file
+        async function loadConfigFromJSON() {
+            try {
+                const response = await fetch('./redirect-config.json');
+                return await response.json();
+            } catch (e) {
+                console.log('No external config found, using default');
+                return null;
+            }
+        }
+
+        // Initialize the redirect
+        async function init() {
+            // Priority: URL params > External JSON > Built-in config
+            const jsonConfig = await loadConfigFromJSON();
+            const finalConfig = jsonConfig;
+            
+            setupRedirect(finalConfig);
+        }
+
+        function setupRedirect(config) {
+            // Update UI elements
+            document.getElementById('title').textContent = config.title;
+            document.getElementById('subtitle').textContent = config.subtitle;
+            document.getElementById('logo').textContent = config.logo;
+            document.getElementById('redirectBtn').href = config.url;
+            
+            if (config.showDestination) {
+                document.getElementById('destination').textContent = `Destination: ${config.url}`;
+            } else {
+                document.getElementById('destination').style.display = 'none';
+            }
+            
+            // Apply theme if provided
+            if (config.theme) {
+                if (config.theme.background) {
+                    document.body.style.background = config.theme.background;
+                }
+                if (config.theme.accentColor) {
+                    document.documentElement.style.setProperty('--accent-color', config.theme.accentColor);
+                }
+            }
+            
+            // Set progress bar duration
+            document.documentElement.style.setProperty('--duration', `${config.delay}s`);
+            
+            // Start countdown
+            startCountdown(config);
+            
+            // Create floating particles
+            createParticles();
+        }
+
+        function startCountdown(config) {
+            let timeLeft = config.delay;
+            const countdownEl = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownEl.textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.location.href = config.url;
+                }
+            }, 1000);
+            
+            // Store timer globally so it can be cancelled
+            window.redirectTimer = timer;
+        }
+
+        function cancelRedirect() {
+            if (window.redirectTimer) {
+                clearInterval(window.redirectTimer);
+            }
+            
+            document.getElementById('title').textContent = 'Redirect Cancelled';
+            document.getElementById('subtitle').textContent = 'You can close this page or navigate manually';
+            document.getElementById('countdown').textContent = 'Stopped';
+            document.getElementById('progressBar').style.animationPlayState = 'paused';
+        }
+
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.width = particle.style.height = (Math.random() * 4 + 1) + 'px';
+                    particle.style.animationDelay = Math.random() * 2 + 's';
+                    particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    
+                    particlesContainer.appendChild(particle);
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 8000);
+                }, i * 100);
+            }
+        }
+
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.location.href = document.getElementById('redirectBtn').href;
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                cancelRedirect();
+            }
+        });
+
+        // Initialize when page loads
+        init();
+    </script>
+</body>
+</html>
