@@ -2,7 +2,7 @@
 
 A beautiful, animated redirect page with JSON-based configuration. Perfect for domain redirects, maintenance pages, or temporary landing pages.
 
-![Sleek Redirect Preview](https://github.com/rajatrajputdev/redirect-mechanism/demo.png)
+![Sleek Redirect Preview](https://raw.githubusercontent.com/rajatrajputdev/redirect-mechanism/refs/heads/main/demo.png)
 
 ## Features
 
